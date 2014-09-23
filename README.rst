@@ -26,7 +26,7 @@ To use this project, you may try the following:
    (The ``/warcbase`` path can modified by changing the name under ``collections`` in `<config.yaml>`_ as well).
 
 
-Please refer to `pywb <https://github.com/ikreymer/pywb>`_ and `warcbase <https://github.com/lintools/warcbase>`_ pages for additional info about these projects.
+Please refer to `pywb <https://github.com/ikreymer/pywb>`_ and `warcbase <https://github.com/lintool/warcbase>`_ pages for additional info about these projects.
 
 
 How It Works
