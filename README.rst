@@ -1,7 +1,7 @@
 pywb-warcbase
 =============
 
-This is an experimental add-on to `pywb <https://github.com/ikreymer/pywb>`_ to allow it to interface with the `warcbase <https://github.com/lintools/warcbase>`_ project for serving WARC files.
+This is an experimental add-on to `pywb <https://github.com/ikreymer/pywb>`_ to allow it to interface with the `warcbase <https://github.com/lintool/warcbase>`_ project for serving WARC files.
 
 
 Usage
