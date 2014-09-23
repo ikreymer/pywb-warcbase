@@ -1,0 +1,24 @@
+# pywb config file
+# ========================================
+#
+
+# Change this to point to the warcbase servlet is running
+warcbase_servlet_url: &warcbase_servlet_url http://my-warcbase-servlet-host:8080/
+
+
+collections:
+    warcbase:
+        index_paths: *warcbase_servlet_url
+
+        # Use special WarcBaseCleintIndexServer as index source
+        server_cls: !!python/name:warcbase.client.WarcBaseClientIndexServer
+
+
+archive_paths: *warcbase_servlet_url
+
+
+enable_http_proxy: true
+
+enable_cdx_api: true
+
+enable_memento: true
