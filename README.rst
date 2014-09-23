@@ -1,7 +1,7 @@
 pywb-warcbase
 =============
 
-This is an experimental add-on to `pywb <https://github.com/ikreymer/pywb>`_ to allow it to interface with the `warcbase <https://github.com/lintools/warcbase>_` project for serving WARC files.
+This is an experimental add-on to `pywb <https://github.com/ikreymer/pywb>`_ to allow it to interface with the `warcbase <https://github.com/lintools/warcbase>`_ project for serving WARC files.
 
 
 Usage
@@ -9,24 +9,24 @@ Usage
 
 To use this project, you may try the following:
 
-1. `git clone github.com/ikreymer/pywb-warcbase`
+1. ``git clone github.com/ikreymer/pywb-warcbase``
 
-2.  (Optional but Recommended) Setup a virtualenv for testing, eg. `virtualenv ./venv; source ./venv/bin/activate`
+2.  (Optional but Recommended) Setup a virtualenv for testing, eg. ``virtualenv ./venv; source ./venv/bin/activate``
 
-3. `cd pywb-warcbase; python setup install`
+3. ``cd pywb-warcbase; python setup install``
 
-4.  (Optional but Recommended) run `python setup test` to ensure basic install succeeded.
+4.  (Optional but Recommended) run ``python setup test`` to ensure basic install succeeded.
 
-5. Edit `config.yaml` and change the `warcbase_servlet_url` setting from `http://my-warcbase-servlet-host:8080/` to the actual URL where the warcbase servlet is running.
+5. Edit `config.yaml <config.yaml>`_ and change the ``warcbase_servlet_url`` setting from ``http://my-warcbase-servlet-host:8080/`` to the actual URL where the warcbase servlet is running.
 
-6. Run `wayback`
+6. Run ``wayback``
 
-7. You should be able to load *example.com* `http://localhost:8080/warcbase/*/http://example.com`. 
+7. You should be able to load *example.com* ``http://localhost:8080/warcbase/*/http://example.com``. 
    
-   (The `/warcbase` path can modified by changing the name under `collections` in `config.yaml` as well).
+   (The ``/warcbase`` path can modified by changing the name under ``collections`` in `<config.yaml>`_ as well).
 
 
-Please refer to `pywb <https://github.com/ikreymer/pywb>`_ page for additional info about pywb.
+Please refer to `pywb <https://github.com/ikreymer/pywb>`_ and `warcbase <https://github.com/lintools/warcbase>`_ pages for additional info about these projects.
 
 
 How It Works
