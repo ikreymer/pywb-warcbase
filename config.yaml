@@ -7,9 +7,13 @@ warcbase_servlet_hostname: &warcbase_servlet_hostname http://localhost:8090
 home_html: ./html/index.html
 error_html: ./html/error.html
 
+static_routes:
+          static/default: pywb/static/
+          static/js: ./js/
+
 # accept all collections except 'static/default', which is used to load static (banner inserts)
 collections:
-    '(?!static/default)([^/$]+)':
+    '(?!static/(?:default|js))([^/$]+)':
         index_paths: *warcbase_servlet_hostname
 
         # Use special WarcBaseCleintIndexServer as index source

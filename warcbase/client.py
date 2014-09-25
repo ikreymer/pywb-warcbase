@@ -13,18 +13,17 @@ class WarcBaseClientIndexServer(object):
     This class is an example of a custom index server designed to
     connect to the WarcBrowserServlet in the warcbase project and retrieve
     a cdx-like index.
-    
+
     The index format is a 3 field 'timestamp\tmime\tfilename' and the remaining
     necessary CDXObject fields are filled in automatically
     """
-    
+
     HTTPS_PREFIX = 'https://'
     HTTP_PREFIX = 'http://'
 
     def __init__(self, paths, **kwargs):
         self.warcbase_path = paths
         logging.debug('Initing WarcBase Client: ' + paths)
-        self._load_colls()
 
     def load_cdx(self, **params):
         print(params)
@@ -41,11 +40,11 @@ class WarcBaseClientIndexServer(object):
 
         # special path for list all
         if params.get('listColls') and is_text:
-            self._load_colls()
-            return '\n'.join(self.colls)
- 
+            colls = self._load_colls()
+            return '\n'.join(colls)
+
         url = params['url']
-        
+
         # force http prefix
         if url.startswith(self.HTTPS_PREFIX):
             url = self.HTTP_PREFIX + url[len(self.HTTPS_PREFIX):]
@@ -65,10 +64,13 @@ class WarcBaseClientIndexServer(object):
             if response.status_code == 500:
                 self._invalid_collection(prefix)
             else:
-                raise BadRequestException('Invalid status code: {0}'.format(response.status_code))
-        
+                raise BadRequestException(('Invalid status code: {0}'.
+                                           format(response.status_code)))
+
         if len(response.content) == 0:
-            msg = 'No Captures found for: ' + url
+            msg = ('No captures found for <b>{0}</b> in collection <i>{1}</i>'.
+                   format(url, prefix.strip('/')))
+
             raise NotFoundException(msg, url=url)
 
         lines = response.content.rstrip().split('\n')
@@ -106,18 +108,18 @@ class WarcBaseClientIndexServer(object):
         return cdx
 
     def _load_colls(self):
-        self.colls = []
+        colls = []
         try:
             response = requests.get(self.warcbase_path + '/')
             if response.status_code == 200:
-                self.colls = response.content.rstrip().split('\n')
+                colls = response.content.rstrip().split('\n')
 
         except Exception:
             pass
 
+        return colls
+
     def _invalid_collection(self, prefix):
-        msg = 'Sorry, <b>{0}</b> is not a valid collection. '.format(prefix.strip('/'))
-        msg += 'Available collections are: <b>{0}</b>'.format(', '.join(self.colls))
+        msg = ('Sorry, <i>{0}</i> is not a valid collection. '.
+               format(prefix.strip('/')))
         raise NotFoundException(msg)
-
-

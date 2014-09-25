@@ -8,7 +8,10 @@
 {{ err_details }}
 </pre>
 </p>
+{% else %}
+<script src="/static/js/listcolls.js"> </script>
 {% endif %}
+
 
 {% if env.pywb_proxy_magic and err_url and status == '404 Not Found' %}
 <p>
