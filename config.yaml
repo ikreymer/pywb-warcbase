@@ -1,24 +1,29 @@
-# pywb config file
+# pywb-warcbase config file
 # ========================================
-#
 
-# Change this to point to the warcbase servlet is running
-warcbase_servlet_url: &warcbase_servlet_url http://my-warcbase-servlet-host:8080/
+# Change this to point to the warcbase servlet is running (without final '/')
+warcbase_servlet_hostname: &warcbase_servlet_hostname http://localhost:8090
 
+home_html: ./html/index.html
+error_html: ./html/error.html
 
+# accept all collections except 'static/default', which is used to load static (banner inserts)
 collections:
-    warcbase:
-        index_paths: *warcbase_servlet_url
+    '(?!static/default)([^/$]+)':
+        index_paths: *warcbase_servlet_hostname
 
         # Use special WarcBaseCleintIndexServer as index source
         server_cls: !!python/name:warcbase.client.WarcBaseClientIndexServer
 
+        filters: ['prefix:/{0}/']
 
-archive_paths: *warcbase_servlet_url
 
+archive_paths: *warcbase_servlet_hostname
 
 enable_http_proxy: true
 
-enable_cdx_api: true
+enable_cdx_api: '\$'
 
 enable_memento: true
+
+framed_replay: true

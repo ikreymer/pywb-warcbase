@@ -1,0 +1,18 @@
+<h2>PyWb WarcBase Error</h2>
+{{ err_msg }}
+
+{% if err_details %}
+<p>Error Details:</p>
+<p>
+<pre>
+{{ err_details }}
+</pre>
+</p>
+{% endif %}
+
+{% if env.pywb_proxy_magic and err_url and status == '404 Not Found' %}
+<p>
+<a href="//select.{{ env.pywb_proxy_magic }}/{{ err_url }}">Try Different Collection</a>
+</p>
+{% endif %}
+

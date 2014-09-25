@@ -2,11 +2,13 @@ import requests
 from httmock import all_requests, urlmatch, HTTMock
 from urlparse import urlsplit
 
+from pywb.utils.wbexception import NotFoundException
+from pytest import raises
 from warcbase.client import WarcBaseClientIndexServer
 from collections import OrderedDict
 
 
-SAMPLE_INDEX = '{0}\ttext/html\t{2}\n{1}\ttext/html\t{3}'
+SAMPLE_INDEX = '{0}\ttext/html\t{2}\n{1}\ttext/html\t{3}\n'
 
 #==============================================================================
 @all_requests
@@ -68,7 +70,7 @@ class TestWarcBase(object):
     def test_not_found(self):
         client = WarcBaseClientIndexServer('http://localhost/context/')
         with HTTMock(mock_warcbase_servlet_index):
-            cdx_iter = client.load_cdx(url='http://not.found.example.com')
-            assert list(cdx_iter) == []
+            with raises(NotFoundException):
+                cdx_iter = client.load_cdx(url='http://not.found.example.com')
 
 

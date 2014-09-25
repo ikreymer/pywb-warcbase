@@ -17,14 +17,12 @@ To use this project, you may try the following:
 
 4.  (Optional but Recommended) run ``python setup test`` to ensure basic install succeeded.
 
-5. Edit `config.yaml <config.yaml>`_ and change the ``warcbase_servlet_url`` setting from ``http://my-warcbase-servlet-host:8080/`` to the actual URL where the warcbase servlet is running.
+5. Edit `config.yaml <config.yaml>`_ and change the ``warcbase_servlet_hostname`` setting from ``http://localhost:8090`` to the actual host:port where the warcbase servlet is running. (A trailing slash should not be included)
 
 6. Run ``wayback``
 
 7. You should be able to load *example.com* ``http://localhost:8080/warcbase/*/http://example.com``. 
    
-   (The ``/warcbase`` path can modified by changing the name under ``collections`` in `<config.yaml>`_ as well).
-
 
 Please refer to `pywb <https://github.com/ikreymer/pywb>`_ and `warcbase <https://github.com/lintool/warcbase>`_ pages for additional info about these projects.
 
@@ -34,6 +32,8 @@ How It Works
 
 This module provides an index reader for connecting to the warcbase `WarcBrowserServlet <https://github.com/lintool/warcbase/blob/master/src/main/java/org/warcbase/browser/WarcBrowserServlet.java>`_ 
 to read the index and convert it to native format (CDXObject).
+
+pywb uses a wildcard collection to accept any collection and pass it to the WarcBaseServlet. A listing of available Warcbase collections will be added soon.
 
 pywb can already has support for loading WARC/ARC files and records from an http prefix, and WarcBrowserServlet also provides such an interface for WARC/ARC loading.
 
