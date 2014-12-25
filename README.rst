@@ -13,7 +13,7 @@ To use this project, you may try the following:
 
 2.  (Optional but Recommended) Setup a virtualenv for testing, eg. ``virtualenv ./venv; source ./venv/bin/activate``
 
-3. ``cd pywb-warcbase; python setup install``
+3. ``cd pywb-warcbase; python setup.py install``
 
 4.  (Optional but Recommended) run ``python setup test`` to ensure basic install succeeded.
 
