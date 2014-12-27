@@ -26,7 +26,6 @@ class WarcBaseClientIndexServer(object):
         logging.debug('Initing WarcBase Client: ' + paths)
 
     def load_cdx(self, **params):
-        print(params)
         prefix = ''
 
         is_text = (params.get('output') == 'text')

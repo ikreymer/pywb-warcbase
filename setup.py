@@ -31,11 +31,11 @@ setup(
         'warcbase',
         ],
     install_requires=[
-        'pywb==0.6.6',
+        'pywb>=0.7.0',
         ],
-    dependency_links=[
-        "git+git://github.com/ikreymer/pywb.git@develop#egg=pywb-0.6.6"
-    ],
+#    dependency_links=[
+#        "git+git://github.com/ikreymer/pywb.git@develop#egg=pywb-0.6.6"
+#    ],
     zip_safe=False,
     cmdclass={'test': PyTest},
     test_suite='',
