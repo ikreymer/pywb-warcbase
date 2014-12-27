@@ -28,6 +28,8 @@ To use this project, you may try the following:
 
 Please refer to `pywb <https://github.com/ikreymer/pywb>`_ and `warcbase <https://github.com/lintool/warcbase>`_ pages for additional info about these projects.
 
+For #6, instead of running ``wayback``, you may also run the ``run-gunicorn.sh`` script to use the `gunicorn <http://gunicorn.org/>`_ server for running pywb. (This provides multiple workers and can be considered more production friendly).
+
 
 How It Works
 ~~~~~~~~~~~~
